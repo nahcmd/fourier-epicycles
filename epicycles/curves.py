@@ -1,5 +1,7 @@
 import numpy as np
 
+#list of curves written as functions of t in [0, 2*pi)
+
 def star(t):
     idx = np.arange(11)                           # 꼭짓점 번호 0..10 (V_10 = V_0)
     ang = np.pi/2 + idx*np.pi/5                   # 각도
@@ -9,3 +11,4 @@ def star(t):
     j = np.floor(s).astype(int) % 10              # 몇 번째 변인지
     u = s - np.floor(s)                           # 변 위에서의 비율
     return V[j] + u*(V[j+1] - V[j])
+

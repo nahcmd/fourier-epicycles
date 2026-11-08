@@ -10,13 +10,11 @@ import matplotlib.pyplot as plt
 
 N = 1000
 K = 10000
-limit = 3
+limit = 2
 
-sorted_fourier_coeffs = epicycles.transform.sorted_fourier_coeffs(K, N, epicycles.curves.star)
-
-relative_error = epicycles.reconstruct.relative_error(sorted_fourier_coeffs, limit, N)
-partial_sum = epicycles.reconstruct.partial_sum(sorted_fourier_coeffs, limit, K)
-
-animate = epicycles.animate.animate_curve(partial_sum, relative_error, K//100, 30)
+coeffs = epicycles.transform.sorted_fourier_coeffs(K, N, epicycles.curves.star)
+err = epicycles.reconstruct.relative_error(coeffs, limit, N)
+approx = epicycles.reconstruct.partial_sum(coeffs, limit, K)
+ani = epicycles.animate.animate_curve(approx, err, K//100, 30)
 
 plt.show()
